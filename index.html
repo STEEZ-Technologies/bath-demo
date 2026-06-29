@@ -1203,7 +1203,7 @@ section{scroll-margin-top:72px}
       <a href="#contact" data-section="contact" data-en="Contact" data-zh="联系我们">Contact</a>
       <a href="#faq" data-section="faq" data-en="FAQ" data-zh="常见问题">FAQ</a>
     </nav>
-    <button id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+    <button id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
       <span></span><span></span><span></span>
     </button>
     <button class="topnav-lang" id="langBtn" aria-label="Switch language">中</button>
@@ -1219,7 +1219,7 @@ section{scroll-margin-top:72px}
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <div class="drawer-brand">ATREO</div>
-    <nav class="drawer-nav">
+    <nav class="drawer-nav" aria-label="Site navigation">
       <a href="#hero" class="drawer-link" data-en="Home" data-zh="首页">Home</a>
       <a href="#manifesto" class="drawer-link" data-en="About" data-zh="品牌理念">About</a>
       <a href="#profile" class="drawer-link" data-en="Profile" data-zh="公司简介">Profile</a>
@@ -1865,7 +1865,7 @@ section{scroll-margin-top:72px}
     <button class="pm-close" onclick="closeProdModal()" aria-label="Close">&#x2715;</button>
     <div class="pm-inner">
       <div class="pm-img-col">
-        <img id="pmImg" src="" alt="" loading="lazy">
+        <img id="pmImg" src="" alt="Product image" loading="lazy">
         <span class="pm-no-img" id="pmNoImg" style="display:none">No image</span>
       </div>
       <div class="pm-info-col">
@@ -2079,7 +2079,7 @@ function buildCatalog(filter='all') {
   grid.innerHTML = items.map(p => `
     <div class="cat-card rv" data-cat="${p.cat}">
       <div class="cat-card-visual" style="background:${PRODUCT_IMAGES[p.id] ? 'var(--black2)' : COLL_BG[p.coll]}">
-        ${PRODUCT_IMAGES[p.id] ? `<img src="${PRODUCT_IMAGES[p.id]}" alt="${p.name}" loading="lazy" class="cat-img-base"><img src="${PRODUCT_IMAGES_HOVER[p.id]}" alt="" loading="lazy" class="cat-img-hover">` : getProductSVG(p)}
+        ${PRODUCT_IMAGES[p.id] ? `<img src="${PRODUCT_IMAGES[p.id]}" alt="${zh && p.name_zh ? p.name_zh : p.name}" loading="lazy" class="cat-img-base"><img src="${PRODUCT_IMAGES_HOVER[p.id]}" alt="${zh && p.name_zh ? p.name_zh : p.name} – detail view" loading="lazy" class="cat-img-hover">` : `<span aria-hidden="true">${getProductSVG(p)}</span>`}
         <span class="cat-badge">${p.cat.toUpperCase()}</span>
       </div>
       <div class="cat-card-body">
@@ -2197,9 +2197,11 @@ function setLang(lang) {
   });
 });
 
+/* ── CATALOG INIT (immediate — DOM ready, no need to wait for resources) ── */
+buildCatalog('all');
+
 /* ── LOADER ── */
 window.addEventListener('load', () => {
-  buildCatalog('all');
   setTimeout(() => { document.getElementById('loader').classList.add('out'); document.body.style.overflow = ''; }, 500);
 });
 
