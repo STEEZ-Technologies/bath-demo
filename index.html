@@ -312,7 +312,7 @@ section{scroll-margin-top:72px}
   color:rgba(26,22,20,.62);
 }
 
-@media(max-width:768px){.pf-inner{grid-template-columns:1fr}.pf-visual{aspect-ratio:16/9;margin-top:32px}}
+@media(max-width:768px){.pf-inner{grid-template-columns:1fr}.pf-visual{aspect-ratio:16/9;margin-top:0}}
 
 /* ── COLLECTION SHOWCASE ── */
 #showcase{background:var(--black);overflow:hidden;position:relative;height:100svh;min-height:580px}
@@ -557,7 +557,7 @@ section{scroll-margin-top:72px}
   font-family:var(--font-h);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
   color:rgba(243,233,216,.62);
 }
-@media(max-width:768px){.mat-inner{grid-template-columns:1fr}.mat-visual{aspect-ratio:16/9;margin-top:32px}}
+@media(max-width:768px){.mat-inner{grid-template-columns:1fr}.mat-visual{aspect-ratio:16/9;margin-top:0}}
 
 /* FLAGSHIP PIECES */
 .mat-flagship{margin-top:clamp(56px,7vw,90px)}
@@ -954,9 +954,22 @@ section{scroll-margin-top:72px}
 .ab-arrow-next{right:clamp(10px,2.5vw,28px)}
 @media(max-width:480px){.ab-arrow{width:34px;height:34px}}
 @media(max-width:768px){
-  .ab-slide .sec{padding-top:clamp(40px,8vw,60px);padding-bottom:clamp(40px,8vw,60px)}
-  .pf-visual{aspect-ratio:4/3!important}
-  .mat-visual{aspect-ratio:4/3!important}
+  .ab-slide .sec{padding-top:clamp(28px,6vw,44px);padding-bottom:clamp(28px,6vw,44px)}
+  /* Image moves to top, landscape ratio so it's short */
+  .pf-visual{aspect-ratio:16/7!important;margin-top:0!important;margin-bottom:18px;order:-1;border-radius:12px}
+  .mat-visual{aspect-ratio:16/7!important;margin-top:0!important;margin-bottom:18px;order:-1;border-radius:12px}
+  /* Company Profile compact */
+  .pf-title{font-size:clamp(26px,8vw,40px)!important;margin-bottom:10px}
+  .pf-body{font-size:13px!important;line-height:1.65!important;margin-bottom:14px}
+  .pf-certs{gap:5px}
+  .pf-cert{padding:5px 9px;font-size:8px}
+  /* Material & Craft compact */
+  .mat-title{font-size:clamp(24px,7vw,38px)!important;margin-bottom:10px}
+  .mat-body{font-size:13px!important;line-height:1.65!important;margin-bottom:14px}
+  .mat-item{padding:9px 0}
+  .mat-item-num{font-size:clamp(20px,6vw,28px);width:38px}
+  .mat-item-title{font-size:13px;margin-bottom:2px}
+  .mat-item-desc{font-size:11px;line-height:1.55}
   .mat-flagship-grid{grid-template-columns:1fr}
 }
 
