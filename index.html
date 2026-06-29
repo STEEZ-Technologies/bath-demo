@@ -167,22 +167,23 @@ section{scroll-margin-top:72px}
   line-height:1.7;color:rgba(243,233,216,.82);max-width:480px;margin-bottom:32px;
   text-shadow:0 2px 16px rgba(0,0,0,.5);
 }
-.hero-cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.hero-cta-row{display:flex;gap:10px;flex-wrap:wrap}
 .hero-cta-primary{
-  display:inline-block;padding:16px 32px;background:var(--accent);color:#171410;
-  font-family:var(--font-h);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  display:inline-block;padding:9px 20px;background:var(--accent);color:#171410;
+  font-family:var(--font-h);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
   transition:background .25s,transform .25s;
 }
 .hero-cta-primary:hover{background:var(--accent2);transform:translateY(-2px)}
 .hero-cta-secondary{
-  display:inline-block;padding:16px 32px;border:1px solid rgba(243,233,216,.4);color:var(--white);
-  font-family:var(--font-h);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  display:inline-block;padding:9px 20px;border:1px solid rgba(243,233,216,.35);color:var(--white);
+  font-family:var(--font-h);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
   transition:all .25s;
 }
-.hero-cta-secondary:hover{border-color:var(--white);background:rgba(255,255,255,.08)}
+.hero-cta-secondary:hover{border-color:var(--white);background:rgba(255,255,255,.07)}
 @media(max-width:640px){
   .hero-content{bottom:clamp(96px,18vw,134px);max-width:88%}
-  .hero-cta-row{flex-direction:column;align-items:flex-start;gap:10px}
+  .hero-cta-row{flex-direction:row;align-items:flex-start;gap:8px;flex-wrap:wrap}
+  .hero-cta-primary,.hero-cta-secondary{padding:8px 16px;font-size:9px;letter-spacing:.11em}
 }
 /* ── HERO SLIDESHOW ── */
 #hero{
@@ -382,17 +383,17 @@ section{scroll-margin-top:72px}
   display:flex;align-items:center;justify-content:center;gap:20px;z-index:4;
 }
 .shw-arrow{
-  width:44px;height:44px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.14);background:rgba(23,20,16,.5);
-  backdrop-filter:blur(12px);
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);background:rgba(23,20,16,.38);
+  backdrop-filter:blur(10px);
   display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:border-color .25s,background .25s;color:rgba(243,233,216,.82);
+  cursor:pointer;transition:border-color .25s,background .25s;color:rgba(243,233,216,.75);
 }
 .shw-arrow:hover{border-color:var(--accent);background:rgba(196,147,74,.12);color:var(--white)}
-.shw-arrow svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
-.shw-dots{display:flex;gap:12px;align-items:center}
-.shw-dot{width:12px;height:12px;border-radius:50%;border:none;padding:8px;box-sizing:content-box;cursor:pointer;background:rgba(243,233,216,.22);transition:background .3s,transform .3s,width .3s}
-.shw-dot.active{background:var(--accent);width:22px;border-radius:3px}
+.shw-arrow svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.shw-dots{display:flex;gap:8px;align-items:center}
+.shw-dot{display:block;width:5px;height:5px;min-width:5px;min-height:5px;border-radius:50%;border:none;padding:0;margin:0;line-height:1;font-size:0;cursor:pointer;background:rgba(243,233,216,.22);transition:background .3s,transform .3s,width .3s;flex-shrink:0;appearance:none;-webkit-appearance:none;box-shadow:none;outline:none}
+.shw-dot.active{background:var(--accent);width:16px;min-width:16px;border-radius:3px}
 /* Counter */
 .shw-counter{
   position:absolute;top:clamp(28px,4vw,44px);right:clamp(40px,8vw,120px);
@@ -949,20 +950,20 @@ section{scroll-margin-top:72px}
 .ab-slide.ab-active{opacity:1}
 .ab-arrow{
   position:absolute;top:50%;transform:translateY(-50%);z-index:3;
-  width:44px;height:44px;border-radius:50%;
-  border:1px solid rgba(26,22,20,.16);
-  background:rgba(245,240,232,.88);
+  width:30px;height:30px;border-radius:50%;
+  border:1px solid rgba(26,22,20,.14);
+  background:rgba(245,240,232,.82);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   display:flex;align-items:center;justify-content:center;
   cursor:pointer;transition:border-color .25s,background .25s,color .25s;
-  color:rgba(26,22,20,.65);
-  box-shadow:0 2px 12px rgba(26,22,20,.1);
+  color:rgba(26,22,20,.6);
+  box-shadow:0 1px 8px rgba(26,22,20,.08);
 }
 .ab-arrow:hover{border-color:var(--accent);background:#fff;color:var(--black)}
-.ab-arrow svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ab-arrow svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .ab-arrow-prev{left:clamp(10px,2.5vw,28px)}
 .ab-arrow-next{right:clamp(10px,2.5vw,28px)}
-@media(max-width:480px){.ab-arrow{width:34px;height:34px}}
+@media(max-width:480px){.ab-arrow{width:26px;height:26px}}
 /* Cap ab-slide section vertical padding on all screen sizes */
 .ab-slide .sec{padding-top:clamp(44px,5.5vw,72px);padding-bottom:clamp(44px,5.5vw,72px)}
 @media(max-width:768px){
@@ -1588,9 +1589,9 @@ section{scroll-margin-top:72px}
         <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
       <div class="shw-dots" id="shwDots">
-        <button class="shw-dot active" data-idx="0"></button>
-        <button class="shw-dot" data-idx="1"></button>
-        <button class="shw-dot" data-idx="2"></button>
+        <span class="shw-dot active" data-idx="0" role="button" tabindex="0" aria-label="Slide 1"></span>
+        <span class="shw-dot" data-idx="1" role="button" tabindex="0" aria-label="Slide 2"></span>
+        <span class="shw-dot" data-idx="2" role="button" tabindex="0" aria-label="Slide 3"></span>
       </div>
       <button class="shw-arrow" id="shwNext" aria-label="Next">
         <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
