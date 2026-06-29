@@ -41,6 +41,7 @@ html{overflow-x:hidden}
 }
 html{scroll-behavior:auto}
 body{font-family:var(--font-b);background:#ffffff;color:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body.loading{overflow:hidden!important;height:100vh!important;height:100svh!important}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:inherit;border:none;background:none}
 img{display:block;max-width:100%}
@@ -1213,7 +1214,7 @@ section{scroll-margin-top:72px}
 @media(max-width:768px){body{padding-bottom:54px}}
 </style>
 </head>
-<body>
+<body class="loading">
 
 <!-- SCROLL PROGRESS -->
 <div id="scrollProgress"></div>
@@ -2239,7 +2240,7 @@ buildCatalog('all');
 
 /* ── LOADER ── */
 window.addEventListener('load', () => {
-  setTimeout(() => { document.getElementById('loader').classList.add('out'); document.body.style.overflow = ''; }, 500);
+  setTimeout(() => { document.getElementById('loader').classList.add('out'); document.body.classList.remove('loading'); document.body.style.overflow = ''; }, 500);
 });
 
 /* ── NAV SCROLL DARKEN ── */
