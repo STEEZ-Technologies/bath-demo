@@ -1921,6 +1921,7 @@ section{scroll-margin-top:72px}
 </div>
 
 <script>
+document.documentElement.style.overflow = 'hidden';
 document.body.style.overflow = 'hidden';
 var currentLang = 'en';
 
@@ -2240,7 +2241,7 @@ buildCatalog('all');
 
 /* ── LOADER ── */
 window.addEventListener('load', () => {
-  setTimeout(() => { document.getElementById('loader').classList.add('out'); document.body.classList.remove('loading'); document.body.style.overflow = ''; }, 500);
+  setTimeout(() => { document.getElementById('loader').classList.add('out'); document.documentElement.style.overflow = ''; document.body.style.overflow = ''; }, 500);
 });
 
 /* ── NAV SCROLL DARKEN ── */
