@@ -735,7 +735,7 @@ section{scroll-margin-top:72px}
 .ct-cd-icon{width:34px;height:34px;border:1px solid rgba(243,233,216,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .ct-cd-icon svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ct-cd-lbl{font-family:var(--font-h);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,233,216,.70);margin-bottom:3px}
-.ct-cd-val{font-family:var(--font-b);font-size:18px;color:var(--white)}
+.ct-cd-val{font-family:var(--font-b);font-size:18px;color:var(--white);text-decoration:none;display:block}
 /* Social/phone block (right col) */
 .ct-soc-block{width:clamp(240px,24vw,300px);flex-shrink:0;display:flex;flex-direction:column;align-items:center}
 .ct-soc-block .ct-wc-title{margin-bottom:18px}
@@ -1100,7 +1100,6 @@ section{scroll-margin-top:72px}
 #hamburgerBtn.open span:nth-child(2){opacity:0;width:0}
 #hamburgerBtn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 @media(max-width:1200px){#hamburgerBtn{display:flex}}
-@media(max-width:768px){#hamburgerBtn{display:none}}
 
 /* ── NAV DRAWER ── */
 #navDrawer{
@@ -1242,9 +1241,7 @@ section{scroll-margin-top:72px}
   transition:background .25s;
 }
 .mobile-sticky-cta a:hover{background:var(--accent2)}
-@media(max-width:768px){.mobile-sticky-cta{display:block}}
 @media(min-width:769px){.mobile-sticky-cta{display:none}}
-@media(max-width:768px){body{padding-bottom:54px}}
 
 /* ── MOBILE READABILITY BOOST ── */
 @media(max-width:768px){
@@ -1758,11 +1755,11 @@ section{scroll-margin-top:72px}
         <div class="ct-details rv">
           <div class="ct-cd-row">
             <div class="ct-cd-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015.1 12.7 19.79 19.79 0 012.03 4.07 2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-            <div><div class="ct-cd-lbl" data-en="Phone" data-zh="电话">Phone</div><div class="ct-cd-val">+86 577 8800 0000</div></div>
+            <div><div class="ct-cd-lbl" data-en="Phone" data-zh="电话">Phone</div><a class="ct-cd-val" href="tel:+8657788000000">+86 577 8800 0000</a></div>
           </div>
           <div class="ct-cd-row">
             <div class="ct-cd-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><div class="ct-cd-lbl" data-en="Email" data-zh="邮箱">Email</div><div class="ct-cd-val">trade@atreo.com</div></div>
+            <div><div class="ct-cd-lbl" data-en="Email" data-zh="邮箱">Email</div><a class="ct-cd-val" href="mailto:trade@atreo.com">trade@atreo.com</a></div>
           </div>
           <div class="ct-cd-row">
             <div class="ct-cd-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
