@@ -52,7 +52,7 @@ ul{list-style:none}
 
 /* ── LAYOUT ── */
 .wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)}
-.sec{padding:clamp(80px,10vw,140px) 0}
+.sec{padding-top:clamp(80px,10vw,140px);padding-bottom:clamp(80px,10vw,140px)}
 
 /* ── SCROLL PROGRESS ── */
 #scrollProgress{
@@ -970,6 +970,7 @@ section{scroll-margin-top:72px}
 .ab-arrow-prev{left:clamp(10px,2.5vw,28px)}
 .ab-arrow-next{right:clamp(10px,2.5vw,28px)}
 @media(max-width:480px){.ab-arrow{width:26px;height:26px}}
+@media(max-width:768px){.ab-arrow{display:none}}
 /* Cap ab-slide section vertical padding on all screen sizes */
 .ab-slide .sec{padding-top:clamp(44px,5.5vw,72px);padding-bottom:clamp(44px,5.5vw,72px)}
 @media(max-width:768px){
