@@ -458,7 +458,6 @@ section{scroll-margin-top:72px}
 @media(max-width:1100px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:720px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:420px){.cat-grid{grid-template-columns:1fr}}
-/* Spec toggle — hidden on desktop (full specs always shown) */
 .cat-spec-toggle{display:none}
 @media(max-width:768px){
   /* Sticky filter bar so users can re-filter without scrolling back up */
@@ -471,18 +470,6 @@ section{scroll-margin-top:72px}
   }
   .cat-filters::-webkit-scrollbar{display:none}
   .cat-filter{flex:0 0 auto;min-height:40px}
-  /* Collapse dense spec tables behind a tap to shorten the scroll */
-  .cat-card-specs{display:none}
-  .cat-card.specs-open .cat-card-specs{display:flex}
-  .cat-spec-toggle{
-    display:flex;align-items:center;justify-content:space-between;width:100%;
-    background:transparent;border:1px solid rgba(26,22,20,.12);
-    font-family:var(--font-h);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-    color:rgba(26,22,20,.7);padding:11px 14px;margin-bottom:12px;cursor:pointer;
-    border-radius:2px;
-  }
-  .cat-spec-toggle .cat-spec-toggle-icon{transition:transform .25s var(--ease)}
-  .cat-card.specs-open .cat-spec-toggle .cat-spec-toggle-icon{transform:rotate(45deg)}
 }
 .cat-card{
   background:var(--black2);display:flex;flex-direction:column;cursor:pointer;
@@ -1221,7 +1208,7 @@ section{scroll-margin-top:72px}
   cursor:pointer;transition:background .2s,color .2s;flex-shrink:0;
 }
 .pm-close:hover{background:rgba(26,22,20,.22);color:var(--black)}
-.pm-scroll{overflow-y:auto;flex:1;scrollbar-width:thin;scrollbar-color:var(--accent) transparent}
+.pm-scroll{overflow-y:auto;flex:1;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y}
 .pm-scroll::-webkit-scrollbar{width:3px}
 .pm-scroll::-webkit-scrollbar-thumb{background:var(--accent)}
 .pm-inner{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
@@ -2231,7 +2218,6 @@ function buildCatalog(filter='all') {
         <div class="cat-card-name">${zh && p.name_zh ? p.name_zh : p.name}</div>
         <div class="cat-card-type">${zh && p.type_zh ? p.type_zh : p.type}</div>
         <div class="cat-card-desc">${zh && p.desc_zh ? p.desc_zh : p.desc}</div>
-        <button class="cat-spec-toggle" onclick="toggleSpecs(event, this)" aria-expanded="false"><span>${zh ? '规格参数' : 'Specifications'}</span><span class="cat-spec-toggle-icon" aria-hidden="true">+</span></button>
         <div class="cat-card-specs">
           ${p.specs.map(([k,v]) => `<div class="cat-spec-row"><span class="cat-spec-k">${(zh && SPEC_KEY_ZH[k]) ? SPEC_KEY_ZH[k] : k}</span><span class="cat-spec-v">${v}</span></div>`).join('')}
         </div>
@@ -2243,15 +2229,6 @@ function buildCatalog(filter='all') {
     </div>
   `).join('');
   setupReveal();
-}
-
-/* ── SPEC TOGGLE (mobile collapsible specs) ── */
-function toggleSpecs(e, btn){
-  e.stopPropagation();
-  var card = btn.closest('.cat-card');
-  if(!card) return;
-  var open = card.classList.toggle('specs-open');
-  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
 
 /* ── PRODUCT MODAL ── */
