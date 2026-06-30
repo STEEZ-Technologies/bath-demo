@@ -1201,13 +1201,14 @@ section{scroll-margin-top:72px}
   background:var(--black2);border-bottom:1px solid rgba(26,22,20,.08);
 }
 .pm-close{
-  width:40px;height:40px;border-radius:50%;
-  background:rgba(26,22,20,.14);border:1.5px solid rgba(26,22,20,.28);
-  font-family:var(--font-b);font-size:18px;line-height:1;color:rgba(26,22,20,.85);
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(26,22,20,.82);border:none;
+  font-family:var(--font-b);font-size:20px;line-height:1;color:#fff;
   display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:background .2s,color .2s;flex-shrink:0;
+  cursor:pointer;transition:background .2s;flex-shrink:0;
+  -webkit-appearance:none;appearance:none;
 }
-.pm-close:hover{background:rgba(26,22,20,.22);color:var(--black)}
+.pm-close:hover{background:rgba(26,22,20,1)}
 .pm-scroll{overflow-y:auto;flex:1;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y}
 .pm-scroll::-webkit-scrollbar{width:3px}
 .pm-scroll::-webkit-scrollbar-thumb{background:var(--accent)}
