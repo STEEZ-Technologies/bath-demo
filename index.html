@@ -1221,7 +1221,7 @@ section{scroll-margin-top:72px}
   .pm-inner{grid-template-columns:1fr}
   .pm-img-col{border-radius:20px 20px 0 0;min-height:240px}
   .pm-img-col img{border-radius:20px 20px 0 0}
-  .pm-close{top:12px;right:14px}
+  .pm-close{top:12px;left:14px;right:auto}
   .pm-info-col{padding-bottom:calc(72px + env(safe-area-inset-bottom,10px))}
 }
 @media(max-width:768px){
@@ -2174,7 +2174,7 @@ function buildCatalog(filter='all') {
   const seriesLabel = zh ? '系列' : 'Series';
   const ctaLabel    = zh ? '查看详情 →' : 'Details →';
   grid.innerHTML = items.map(p => `
-    <div class="cat-card rv" data-cat="${p.cat}">
+    <div class="cat-card rv" data-cat="${p.cat}" onclick="openProdModal('${p.id}')" style="cursor:pointer">
       <div class="cat-card-visual" style="background:${PRODUCT_IMAGES[p.id] ? 'var(--black2)' : COLL_BG[p.coll]}">
         ${PRODUCT_IMAGES[p.id] ? `<img src="${PRODUCT_IMAGES[p.id]}" alt="${zh && p.name_zh ? p.name_zh : p.name}" loading="lazy" class="cat-img-base"><img src="${PRODUCT_IMAGES_HOVER[p.id]}" alt="${zh && p.name_zh ? p.name_zh : p.name} – detail view" loading="lazy" class="cat-img-hover">` : `<span aria-hidden="true">${getProductSVG(p)}</span>`}
         <span class="cat-badge">${p.cat.toUpperCase()}</span>
@@ -2199,6 +2199,7 @@ function buildCatalog(filter='all') {
 }
 
 /* ── PRODUCT MODAL ── */
+var _scrollY = 0;
 function openProdModal(id) {
   var p = PRODUCTS.find(function(x){ return x.id === id; });
   if (!p) return;
@@ -2239,12 +2240,20 @@ function openProdModal(id) {
   var modal = document.getElementById('prodModal');
   modal.dataset.pid = id;
   modal.classList.add('open');
+  _scrollY = window.scrollY;
   document.body.style.overflow = 'hidden';
+  document.body.style.position = 'fixed';
+  document.body.style.top = '-' + _scrollY + 'px';
+  document.body.style.width = '100%';
 }
 
 function closeProdModal() {
   document.getElementById('prodModal').classList.remove('open');
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
   document.body.style.overflow = '';
+  window.scrollTo(0, _scrollY);
 }
 
 document.addEventListener('keydown', function(e){
