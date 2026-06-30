@@ -840,20 +840,6 @@ section{scroll-margin-top:72px}
 @media(max-width:768px){#mob-nav{display:block}body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}}
 
 /* ── MOBILE STICKY CTA ── */
-#mobCta{
-  display:none;position:fixed;z-index:1085;
-  right:16px;bottom:calc(72px + env(safe-area-inset-bottom,0px) + 14px);
-  align-items:center;gap:8px;
-  padding:13px 20px;border-radius:40px;
-  background:var(--accent);color:#171410;text-decoration:none;
-  font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  box-shadow:0 8px 24px rgba(0,0,0,.32),0 0 0 1px rgba(196,147,74,.4);
-  transition:opacity .35s var(--ease),transform .35s var(--ease),background .25s;
-  -webkit-tap-highlight-color:transparent;
-}
-#mobCta svg{flex-shrink:0}
-#mobCta.hide{opacity:0;transform:translateY(14px) scale(.92);pointer-events:none}
-@media(max-width:768px){#mobCta{display:inline-flex}}
 
 /* ── SCROLL REVEAL ── */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .75s var(--ease-o),transform .75s var(--ease-o)}
@@ -1218,23 +1204,26 @@ section{scroll-margin-top:72px}
 .pm-overlay.open{opacity:1;visibility:visible}
 .pm-box{
   background:var(--black2);border-radius:20px;
-  width:100%;max-width:860px;max-height:90vh;overflow-y:auto;
-  position:relative;
+  width:100%;max-width:860px;max-height:90vh;overflow:hidden;
+  position:relative;display:flex;flex-direction:column;
   transform:translateY(24px);transition:transform .45s cubic-bezier(.22,1,.36,1);
-  scrollbar-width:thin;scrollbar-color:var(--accent) transparent;
 }
-.pm-box::-webkit-scrollbar{width:3px}
-.pm-box::-webkit-scrollbar-thumb{background:var(--accent)}
 .pm-overlay.open .pm-box{transform:translateY(0)}
-.pm-close{
-  position:absolute;top:16px;right:18px;z-index:2;
-  width:34px;height:34px;border-radius:50%;
-  background:rgba(26,22,20,.08);border:1px solid rgba(26,22,20,.12);
-  font-family:var(--font-b);font-size:18px;line-height:1;color:rgba(26,22,20,.6);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:background .2s,color .2s;
+.pm-header{
+  display:flex;align-items:center;padding:12px 14px 8px;flex-shrink:0;
+  background:var(--black2);border-bottom:1px solid rgba(26,22,20,.08);
 }
-.pm-close:hover{background:rgba(26,22,20,.15);color:var(--black)}
+.pm-close{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(26,22,20,.14);border:1.5px solid rgba(26,22,20,.28);
+  font-family:var(--font-b);font-size:18px;line-height:1;color:rgba(26,22,20,.85);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background .2s,color .2s;flex-shrink:0;
+}
+.pm-close:hover{background:rgba(26,22,20,.22);color:var(--black)}
+.pm-scroll{overflow-y:auto;flex:1;scrollbar-width:thin;scrollbar-color:var(--accent) transparent}
+.pm-scroll::-webkit-scrollbar{width:3px}
+.pm-scroll::-webkit-scrollbar-thumb{background:var(--accent)}
 .pm-inner{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
 .pm-img-col{
   position:relative;background:var(--black3);border-radius:20px 0 0 20px;
@@ -1272,9 +1261,8 @@ section{scroll-margin-top:72px}
   .pm-overlay{padding:0;align-items:flex-end}
   .pm-box{border-radius:20px 20px 0 0;max-height:92vh;max-width:100%}
   .pm-inner{grid-template-columns:1fr}
-  .pm-img-col{border-radius:20px 20px 0 0;min-height:240px}
-  .pm-img-col img{border-radius:20px 20px 0 0}
-  .pm-close{top:12px;left:14px;right:auto}
+  .pm-img-col{border-radius:0;min-height:240px}
+  .pm-img-col img{border-radius:0}
   .pm-info-col{padding-bottom:calc(72px + env(safe-area-inset-bottom,10px))}
 }
 @media(max-width:768px){
@@ -1409,11 +1397,6 @@ section{scroll-margin-top:72px}
   </div>
 </nav>
 
-<!-- MOBILE STICKY CTA -->
-<a href="#contact" id="mobCta" aria-label="Request a quote or sample" data-en="Get a Quote" data-zh="获取报价">
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-  <span>Get a Quote</span>
-</a>
 
 <!-- HERO -->
 <section id="hero">
@@ -2017,21 +2000,25 @@ section{scroll-margin-top:72px}
 <!-- PRODUCT DETAIL MODAL -->
 <div id="prodModal" class="pm-overlay" onclick="if(event.target===this)closeProdModal()" role="dialog" aria-modal="true">
   <div class="pm-box">
-    <button class="pm-close" onclick="closeProdModal()" aria-label="Close">&#x2715;</button>
-    <div class="pm-inner">
-      <div class="pm-img-col">
-        <img id="pmImg" src="" alt="Product image" loading="lazy">
-        <span class="pm-no-img" id="pmNoImg" style="display:none">No image</span>
-      </div>
-      <div class="pm-info-col">
-        <div id="pmColl" class="pm-coll"></div>
-        <div id="pmNum"  class="pm-num"></div>
-        <h3  id="pmName" class="pm-name"></h3>
-        <div id="pmType" class="pm-type"></div>
-        <p   id="pmDesc" class="pm-desc"></p>
-        <div id="pmSpecs" class="pm-specs"></div>
-        <div id="pmFinishes" class="pm-finishes"></div>
-        <a id="pmEnquire" href="#contact" class="pm-enquire" onclick="closeProdModal()">Enquire →</a>
+    <div class="pm-header">
+      <button class="pm-close" onclick="closeProdModal()" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="pm-scroll">
+      <div class="pm-inner">
+        <div class="pm-img-col">
+          <img id="pmImg" src="" alt="Product image" loading="lazy">
+          <span class="pm-no-img" id="pmNoImg" style="display:none">No image</span>
+        </div>
+        <div class="pm-info-col">
+          <div id="pmColl" class="pm-coll"></div>
+          <div id="pmNum"  class="pm-num"></div>
+          <h3  id="pmName" class="pm-name"></h3>
+          <div id="pmType" class="pm-type"></div>
+          <p   id="pmDesc" class="pm-desc"></p>
+          <div id="pmSpecs" class="pm-specs"></div>
+          <div id="pmFinishes" class="pm-finishes"></div>
+          <a id="pmEnquire" href="#contact" class="pm-enquire" onclick="closeProdModal()">Enquire →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -2707,20 +2694,6 @@ function toggleFaq(el) {
     }
   });
 
-  /* Hide the floating "Get a Quote" CTA once the contact/footer area is in view */
-  (function(){
-    var cta = document.getElementById('mobCta');
-    var contact = document.getElementById('contact');
-    var footer = document.getElementById('footer');
-    if(!cta || !contact || !('IntersectionObserver' in window)) return;
-    var io = new IntersectionObserver(function(entries){
-      var anyVisible = entries.some(function(en){ return en.isIntersecting; });
-      cta.classList.toggle('hide', anyVisible);
-    }, { threshold: 0.12 });
-    io.observe(contact);
-    if(footer) io.observe(footer);
-    cta.addEventListener('click', function(){ if(drawer.classList.contains('open')) closeDrawer(); });
-  })();
 
   /* sync active state with scroll spy */
   var drawerLinks = drawer.querySelectorAll('.drawer-link[href^="#"]');
