@@ -2005,7 +2005,7 @@ section{scroll-margin-top:72px}
           <p   id="pmDesc" class="pm-desc"></p>
           <div id="pmSpecs" class="pm-specs"></div>
           <div id="pmFinishes" class="pm-finishes"></div>
-          <a id="pmEnquire" href="#contact" class="pm-enquire" onclick="closeProdModal()">Enquire →</a>
+          <a id="pmEnquire" href="#" class="pm-enquire" onclick="event.preventDefault();closeProdModal();requestAnimationFrame(function(){var t=document.getElementById('contact');if(t)t.scrollIntoView({behavior:'smooth'});})">Enquire →</a>
         </div>
       </div>
     </div>
@@ -2225,7 +2225,7 @@ function buildCatalog(filter='all') {
         <div class="cat-card-finishes">
           ${p.finishes.map(f => `<span class="cat-finish">${(zh && FINISH_ZH[f]) ? FINISH_ZH[f] : f}</span>`).join('')}
         </div>
-        <button class="cat-card-cta" onclick="openProdModal('${p.id}')">${ctaLabel}</button>
+        <button class="cat-card-cta" onclick="event.stopPropagation();openProdModal('${p.id}')">${ctaLabel}</button>
       </div>
     </div>
   `).join('');
