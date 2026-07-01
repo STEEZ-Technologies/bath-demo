@@ -2273,21 +2273,24 @@ function openProdModal(id) {
 
   var modal = document.getElementById('prodModal');
   modal.dataset.pid = id;
-  modal.classList.add('open');
-  _scrollY = window.scrollY;
+  _scrollY = window.pageYOffset || window.scrollY || 0;
   document.body.style.overflow = 'hidden';
   document.body.style.position = 'fixed';
   document.body.style.top = '-' + _scrollY + 'px';
   document.body.style.width = '100%';
+  modal.classList.add('open');
 }
 
 function closeProdModal() {
+  var restoreY = _scrollY;
   document.getElementById('prodModal').classList.remove('open');
   document.body.style.position = '';
   document.body.style.top = '';
   document.body.style.width = '';
   document.body.style.overflow = '';
-  window.scrollTo(0, _scrollY);
+  requestAnimationFrame(function(){
+    window.scrollTo(0, restoreY);
+  });
 }
 
 document.addEventListener('keydown', function(e){
